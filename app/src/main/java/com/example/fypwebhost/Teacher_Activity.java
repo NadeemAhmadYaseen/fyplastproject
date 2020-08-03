@@ -41,7 +41,7 @@ public class Teacher_Activity extends AppCompatActivity {
         //I added this if statement to keep the selected fragment when rotating the device
         if (savedInstanceState == null) {
             getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
-                    new HomeFragment(loginEmail, userId, userName, userPassword)).commit();
+                    new HomeFragment(loginEmail, userId, userName, userPassword)).addToBackStack(null).commit();
         }
     }
     private BottomNavigationView.OnNavigationItemSelectedListener navListener =
@@ -63,12 +63,16 @@ public class Teacher_Activity extends AppCompatActivity {
                             selectedFragment = new HomeFragment(loginEmail, userId, userName, userPassword);
                             break;
                     }
+
                     getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
-                            selectedFragment).commit();
+                            selectedFragment).addToBackStack(null).commit();
 
                     return true;
+
+
                 }
             };
+
 
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.mymenu,menu);
@@ -101,6 +105,12 @@ public class Teacher_Activity extends AppCompatActivity {
                 Intent intent2 = new Intent(this, CosineComparing.class);
                 startActivity(intent2);
                 break;
+
+            case R.id.menu_compare2:
+                Intent inten = new Intent(this, jaro_winkler_algorithm.class);
+                startActivity(inten);
+                break;
+
 
         }
         return true;

@@ -43,7 +43,7 @@ public class CurrentClassTeacher extends AppCompatActivity {
 
         if (savedInstanceState == null) {
             getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
-                    new ClassStream()).commit();
+                    new ClassStream()).addToBackStack(null).commit();
         }
     }
 
@@ -66,7 +66,7 @@ public class CurrentClassTeacher extends AppCompatActivity {
                     }
 
                     getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
-                            selectedFragment).commit();
+                            selectedFragment).addToBackStack(null).commit();
 
                     return true;
                 }

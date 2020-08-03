@@ -10,6 +10,8 @@
 
 
 
+
+
     <ScrollView
         android:id="@+id/sc1"
         android:layout_width="match_parent"

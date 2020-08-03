@@ -33,6 +33,7 @@ public class UploadingAssignment extends AppCompatActivity {
     String encodedfile, fileName, TAG = "INFO", path, fileLink = "https://temp321.000webhostapp.com/connect/files/", fileNameNew;
     int PICKFILE_REQUEST_CODE = 100;
     SharedPreferences prefs;
+    private int ACTIVITY_CHOOSE_FILE = 1;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -46,14 +47,16 @@ public class UploadingAssignment extends AppCompatActivity {
         Dexter.withContext(this).withPermission(Manifest.permission.READ_EXTERNAL_STORAGE).withListener(new PermissionListener() {
             @Override
             public void onPermissionGranted(PermissionGrantedResponse permissionGrantedResponse) {
-                Intent intent = new Intent(Intent.ACTION_GET_CONTENT);
-                intent.setType("*/txt");
-                intent.addCategory(Intent.CATEGORY_OPENABLE);
+
 
                 try {
-                    startActivityForResult(
-                            Intent.createChooser(intent, "Select a File to Upload"),
-                            PICKFILE_REQUEST_CODE);
+                    Intent chooseFile;
+                    Intent intent;
+                    chooseFile = new Intent(Intent.ACTION_GET_CONTENT);
+                    chooseFile.addCategory(Intent.CATEGORY_OPENABLE);
+                    chooseFile.setType("*/*");
+                    intent = Intent.createChooser(chooseFile, "Choose a file");
+                    startActivityForResult(intent, ACTIVITY_CHOOSE_FILE);
                 } catch (android.content.ActivityNotFoundException ex) {
                     // Potentially direct the user to the Market with a Dialog
                     Snackbar snackbar = Snackbar.make(findViewById(android.R.id.content), "Please install a File Manager.", Snackbar.LENGTH_LONG);
@@ -79,6 +82,7 @@ public class UploadingAssignment extends AppCompatActivity {
     }@RequiresApi(api = Build.VERSION_CODES.KITKAT)
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
+
         if (requestCode == PICKFILE_REQUEST_CODE && data != null && resultCode == RESULT_OK) {
             Uri uri = data.getData();
             path = new PathFromUri().getPathFromUri(UploadingAssignment.this, uri);
@@ -99,7 +103,7 @@ public class UploadingAssignment extends AppCompatActivity {
     private void uploadFile() {
         try {
 
-            new MultipartUploadRequest(UploadingAssignment.this, UUID.randomUUID().toString(), "https://temp321.000webhostapp.com/connect/uploadfile.php")
+            new MultipartUploadRequest(UploadingAssignment.this, UUID.randomUUID().toString(), "https://temp321.000webhostapp.com/connect/finalfiles.php")
                     .addFileToUpload(path, "file")
                     .addParameter("fileName", fileName)
                     .setNotificationConfig(new UploadNotificationConfig())

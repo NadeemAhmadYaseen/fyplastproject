@@ -1,6 +1,7 @@
 package com.example.fypwebhost;
 
 import android.app.AlertDialog;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -31,8 +32,10 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
-public class ClassMembers extends Fragment {
+import static android.content.Context.MODE_PRIVATE;
 
+public class ClassMembers extends Fragment {
+    SharedPreferences sharedPreferences1;
     public static ArrayList<MembersModelClass> membersArrayList = new ArrayList<>();
     MembersAdapter adapter;
     ListView listView;
@@ -64,7 +67,11 @@ public class ClassMembers extends Fragment {
             {
               MembersModelClass membersModelClass = membersArrayList.get(position);
               studentID = membersModelClass.getStudentID(); // to use in sending data for update
-              showRemoveDialog(studentID, classID);
+                  sharedPreferences1= getActivity().getSharedPreferences("StudentSession", MODE_PRIVATE);
+                SharedPreferences.Editor editor = sharedPreferences1.edit();
+                editor.putString("studentid",studentID);
+                editor.apply();
+                showRemoveDialog(studentID, classID);
             }
 
             else

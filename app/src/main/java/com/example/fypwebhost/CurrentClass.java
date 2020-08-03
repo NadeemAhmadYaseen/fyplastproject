@@ -43,7 +43,7 @@ public class CurrentClass extends AppCompatActivity {
 
         if (savedInstanceState == null) {
             getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
-                    new ClassStream()).commit();
+                    new ClassStream()).addToBackStack(null).commit();
         }
     }
 
@@ -58,7 +58,7 @@ public class CurrentClass extends AppCompatActivity {
                             selectedFragment = new ClassStream();
                             break;
                         case R.id.navigation_classWork:
-                            selectedFragment = new ClassWork(classCode, userType, classID);
+                            selectedFragment = new ClassWork(classCode, userType, classID,userId);
                             break;
                         case R.id.navigation_members:
                             selectedFragment = new ClassMembers(classCode, classID, userType);
@@ -66,11 +66,13 @@ public class CurrentClass extends AppCompatActivity {
                     }
 
                     getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
-                            selectedFragment).commit();
+                            selectedFragment).addToBackStack(null).commit();
 
                     return true;
                 }
             };
+
+
 
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.mymenu,menu);
@@ -89,6 +91,7 @@ public class CurrentClass extends AppCompatActivity {
                 editor.commit();
 
                 Intent intent1 = new Intent(getApplicationContext(), login.class);
+
                 startActivity(intent1);
                 break;
 

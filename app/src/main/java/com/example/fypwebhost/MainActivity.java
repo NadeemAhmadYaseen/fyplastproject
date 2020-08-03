@@ -38,16 +38,15 @@ public class MainActivity extends AppCompatActivity {
     RadioGroup radioGroupType;
     RadioButton radioButtonTeacher, radioButtonStudent;
     String randomNumber, verificationCode,
-    nameForSignUp, emailForSignUp, passwordForSignUp;
+            nameForSignUp, emailForSignUp, passwordForSignUp;
     int user_type;
     TextInputLayout verifyGroup;
 
 
-
-    RelativeLayout relativeLayoutsignup,loginlayout, centersignup;
-    LinearLayout linearLayoutmain,linearLayoutcontent;
+    RelativeLayout relativeLayoutsignup, loginlayout, centersignup;
+    LinearLayout linearLayoutmain, linearLayoutcontent;
     ImageButton imageButton;
-    TextView textViewEmail,textViewUser,textViewPassword,signuptitle;
+    TextView textViewEmail, textViewUser, textViewPassword, signuptitle;
     ProgressBar progressBar;
     View view;
 
@@ -62,31 +61,31 @@ public class MainActivity extends AppCompatActivity {
         getSupportActionBar().hide();
         /////Image button casting/////
 
-        imageButton=(ImageButton)findViewById(R.id.user_profile_photo);
+        imageButton = (ImageButton) findViewById(R.id.user_profile_photo);
 
         /////Relative layout casting/////
 
-        relativeLayoutsignup=(RelativeLayout)findViewById(R.id.relativeLayoutsignup);
-        loginlayout=(RelativeLayout)findViewById(R.id.loginLayout);
-        centersignup=(RelativeLayout)findViewById(R.id.centersignup);
+        relativeLayoutsignup = (RelativeLayout) findViewById(R.id.relativeLayoutsignup);
+        loginlayout = (RelativeLayout) findViewById(R.id.loginLayout);
+        centersignup = (RelativeLayout) findViewById(R.id.centersignup);
 
 /////Linear layout casting/////
-        linearLayoutmain=(LinearLayout) findViewById(R.id.linearlayoutmain);
-        linearLayoutcontent=(LinearLayout) findViewById(R.id.linearlayoutcontent);
+        linearLayoutmain = (LinearLayout) findViewById(R.id.linearlayoutmain);
+        linearLayoutcontent = (LinearLayout) findViewById(R.id.linearlayoutcontent);
 
 
 /////View casting/////
         view = (View) findViewById(R.id.Viewmain);
 
         /////Radio group  casting/////
-        radioGroupType = (RadioGroup)findViewById(R.id.radioGroupType);
+        radioGroupType = (RadioGroup) findViewById(R.id.radioGroupType);
         getSupportActionBar().hide();
-        radioButtonStudent = (RadioButton)findViewById(R.id.radio_students);
-        radioButtonTeacher = (RadioButton)findViewById(R.id.radio_teacher) ;
+        radioButtonStudent = (RadioButton) findViewById(R.id.radio_students);
+        radioButtonTeacher = (RadioButton) findViewById(R.id.radio_teacher);
 
         /////Progress bar casting/////
 
-        progressBar=(ProgressBar)findViewById(R.id.progressBar);
+        progressBar = (ProgressBar) findViewById(R.id.progressBar);
 
         /////text View casting/////
         textViewUser = (TextView) findViewById(R.id.textViewName);
@@ -101,10 +100,10 @@ public class MainActivity extends AppCompatActivity {
         editTextVerificationCode = findViewById(R.id.editTextVerificationCode);
 
 
-        radioGroupType = (RadioGroup)findViewById(R.id.radioGroupType);
+        radioGroupType = (RadioGroup) findViewById(R.id.radioGroupType);
 
-        radioButtonStudent = (RadioButton)findViewById(R.id.radio_students);
-        radioButtonTeacher = (RadioButton)findViewById(R.id.radio_teacher) ;
+        radioButtonStudent = (RadioButton) findViewById(R.id.radio_students);
+        radioButtonTeacher = (RadioButton) findViewById(R.id.radio_teacher);
 
         textViewLogin = (TextView) findViewById(R.id.textViewLogin);
         textViewLogin.setOnClickListener(new View.OnClickListener() {
@@ -115,9 +114,9 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
-        editTextName =(EditText) findViewById(R.id.txtName);
-        editTextEmail =(EditText) findViewById(R.id.txtEmail);
-        editTextPassword =(EditText) findViewById(R.id.txtPassword);
+        editTextName = (EditText) findViewById(R.id.txtName);
+        editTextEmail = (EditText) findViewById(R.id.txtEmail);
+        editTextPassword = (EditText) findViewById(R.id.txtPassword);
 
 
         buttonAdd = (Button) findViewById(R.id.btnAdd);
@@ -126,18 +125,18 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                nameForSignUp = editTextName.getText().toString().trim();;
-                emailForSignUp = editTextEmail.getText().toString().trim();;
-                passwordForSignUp = editTextPassword.getText().toString().trim();;
+                nameForSignUp = editTextName.getText().toString().trim();
+                ;
+                emailForSignUp = editTextEmail.getText().toString().trim();
+                ;
+                passwordForSignUp = editTextPassword.getText().toString().trim();
+                ;
 
                 verificationCode = verifyUser();
                 String verifyCode = editTextVerificationCode.getText().toString();
-                if(verifyCode.isEmpty())
-                {
+                if (verifyCode.isEmpty()) {
                     Toast.makeText(MainActivity.this, "enter code", Toast.LENGTH_SHORT).show();
-                }
-                else
-                {
+                } else {
                     editTextVerificationCode.setText(null);
                 }
 
@@ -148,12 +147,9 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
                 String code = editTextVerificationCode.getText().toString().trim();
 
-                if(code.contains(randomNumber))
-                {
+                if (code.contains(randomNumber)) {
                     signUpUser();
-                }
-                else
-                {
+                } else {
                     Toast.makeText(MainActivity.this, "Code not correct", Toast.LENGTH_SHORT).show();
                 }
             }
@@ -166,26 +162,20 @@ public class MainActivity extends AppCompatActivity {
         final String email = emailForSignUp;
         final String password = passwordForSignUp;
 
-        if(name.isEmpty() || email.isEmpty() || password.isEmpty())
-        {
-            Toast.makeText(this, "fill all text" , Toast.LENGTH_SHORT).show();
-        }
-        else
-        {
+        if (name.isEmpty() || email.isEmpty() || password.isEmpty()) {
+            Toast.makeText(this, "fill all text", Toast.LENGTH_SHORT).show();
+        } else {
 
 
             StringRequest request = new StringRequest(Request.Method.POST, "https://temp321.000webhostapp.com/connect/Connect.php",
                     new Response.Listener<String>() {
                         @Override
                         public void onResponse(String response) {
-                            if(response.contains("Account Created"))
-                            {
+                            if (response.contains("Account Created")) {
                                 Toast.makeText(MainActivity.this, "Account Created", Toast.LENGTH_SHORT).show();
                                 Intent intent = new Intent(MainActivity.this, login.class);
                                 startActivity(intent);
-                            }
-                            else
-                            {
+                            } else {
                                 Toast.makeText(MainActivity.this, response, Toast.LENGTH_SHORT).show();
                             }
 
@@ -197,10 +187,10 @@ public class MainActivity extends AppCompatActivity {
                 }
             }
 
-            ){
+            ) {
                 @Override
                 protected Map<String, String> getParams() throws AuthFailureError {
-                    Map<String, String > params = new HashMap<String, String>();
+                    Map<String, String> params = new HashMap<String, String>();
 
                     params.put("Name", name);
                     params.put("Email", email);
@@ -216,63 +206,59 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
-    private String verifyUser()
-    {
+    private String verifyUser() {
         final String email = editTextEmail.getText().toString().trim();
 
 
-                    StringRequest request = new StringRequest(Request.Method.POST, "https://temp321.000webhostapp.com/connect/verifyUser.php",
-                    new Response.Listener<String>() {
-                        @Override
-                        public void onResponse(String response) {
-                            if(response.contains("Email verified cheema"))
-                            {
-                                Toast.makeText(MainActivity.this, "Email Verified", Toast.LENGTH_SHORT).show();
-                                String[] data = response.split(",");
-                                randomNumber = data[1];
-                            }
-                            else
-                            {
-                                Toast.makeText(MainActivity.this, response, Toast.LENGTH_SHORT).show();
-                            }
-
+        StringRequest request = new StringRequest(Request.Method.POST, "https://temp321.000webhostapp.com/connect/verifyUser.php",
+                new Response.Listener<String>() {
+                    @Override
+                    public void onResponse(String response) {
+                        if (response.contains("Email verified cheema")) {
+                            Toast.makeText(MainActivity.this, "Email Verified", Toast.LENGTH_SHORT).show();
+                            String[] data = response.split(",");
+                            randomNumber = data[1];
+                        } else {
+                            Toast.makeText(MainActivity.this, response, Toast.LENGTH_SHORT).show();
                         }
-                    }, new Response.ErrorListener() {
-                @Override
-                public void onErrorResponse(VolleyError error) {
-                    Toast.makeText(MainActivity.this, error.getMessage(), Toast.LENGTH_SHORT).show();
-                }
+
+                    }
+                }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                Toast.makeText(MainActivity.this, error.getMessage(), Toast.LENGTH_SHORT).show();
             }
+        }
 
-            ){
-                @Override
-                protected Map<String, String> getParams() throws AuthFailureError {
-                    Map<String, String > params = new HashMap<String, String>();
+        ) {
+            @Override
+            protected Map<String, String> getParams() throws AuthFailureError {
+                Map<String, String> params = new HashMap<String, String>();
 
-                    params.put("Email", email);
+                params.put("Email", email);
 
-                    return params;
-                }
-            };
+                return params;
+            }
+        };
 
-            RequestQueue requestQueue = Volley.newRequestQueue(MainActivity.this);
-            requestQueue.add(request);
+        RequestQueue requestQueue = Volley.newRequestQueue(MainActivity.this);
+        requestQueue.add(request);
 
-            radioGroupType.setVisibility(View.INVISIBLE);
-            buttonVerify.setVisibility(View.VISIBLE);
-            buttonAdd.setVisibility(View.INVISIBLE);
-            verifyGroup.setVisibility(View.VISIBLE);
-            textViewLogin.setVisibility(View.INVISIBLE);
-       signuptitle.setVisibility(View.INVISIBLE);
+        radioGroupType.setVisibility(View.INVISIBLE);
+        buttonVerify.setVisibility(View.VISIBLE);
+        buttonAdd.setVisibility(View.INVISIBLE);
+        verifyGroup.setVisibility(View.VISIBLE);
+        textViewLogin.setVisibility(View.INVISIBLE);
+        signuptitle.setVisibility(View.INVISIBLE);
         textViewEmail.setVisibility(View.INVISIBLE);
         textViewPassword.setVisibility(View.INVISIBLE);
         textViewUser.setVisibility(View.INVISIBLE);
         textViewLogin.setVisibility(View.INVISIBLE);
-editTextEmail.setVisibility(View.INVISIBLE);
-editTextName.setVisibility(View.INVISIBLE);
-editTextPassword.setVisibility(View.INVISIBLE);
+        editTextEmail.setVisibility(View.INVISIBLE);
+        editTextName.setVisibility(View.INVISIBLE);
+        editTextPassword.setVisibility(View.INVISIBLE);
 
-            return randomNumber;
+        return randomNumber;
     }
 
     public void onRadioButtonClicked(View view) {
@@ -281,7 +267,7 @@ editTextPassword.setVisibility(View.INVISIBLE);
         user_type = -1;
 
         // Check which radio button was clicked
-        switch(view.getId()) {
+        switch (view.getId()) {
             case R.id.radio_teacher:
                 if (checked)
                     user_type = 1;
@@ -293,10 +279,12 @@ editTextPassword.setVisibility(View.INVISIBLE);
         }
 //        Toast.makeText(MainActivity.this, user_type, Toast.LENGTH_SHORT).show();
     }
+
     public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.mymenu,menu);
+        getMenuInflater().inflate(R.menu.mymenu, menu);
         return true;
     }
+
     public boolean onOptionsItemSelected(MenuItem item) {
         int id = item.getItemId();
         switch (id) {
@@ -309,8 +297,13 @@ editTextPassword.setVisibility(View.INVISIBLE);
                 Intent intent2 = new Intent(this, CosineComparing.class);
                 startActivity(intent2);
                 break;
+            case R.id.menu_compare2:
+                Intent ini = new Intent(this,jaro_winkler_algorithm.class);
+                startActivity(ini);
+                break;
 
         }
         return true;
     }
+
 }
