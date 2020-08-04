@@ -58,7 +58,7 @@ public class CurrentClass extends AppCompatActivity {
                             selectedFragment = new ClassStream();
                             break;
                         case R.id.navigation_classWork:
-                            selectedFragment = new ClassWork(classCode, userType, classID,userId);
+                            selectedFragment = new ClassWork(classCode, userType, classID);
                             break;
                         case R.id.navigation_members:
                             selectedFragment = new ClassMembers(classCode, classID, userType);

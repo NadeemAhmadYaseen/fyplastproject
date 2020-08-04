@@ -1,7 +1,7 @@
 package com.example.fypwebhost;
 
 
-public class PostDetail {
+public class  PostDetail {
     private String postId, postTitle, postDescription;
 
     public PostDetail(String postId, String postTitle, String postDescription) {

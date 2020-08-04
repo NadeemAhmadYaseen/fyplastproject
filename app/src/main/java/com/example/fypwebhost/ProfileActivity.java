@@ -112,7 +112,6 @@ public class ProfileActivity extends AppCompatActivity {
                     Map<String, String > params = new HashMap<String, String>();
 
                     params.put("id", userId);
-                    params.put("password", newPassword);
                     params.put("name", newName);
 
                     return params;

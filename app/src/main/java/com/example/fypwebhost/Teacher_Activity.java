@@ -23,7 +23,7 @@ public class Teacher_Activity extends AppCompatActivity {
     String loginEmail, userId, userName, userPassword, Pic;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
+         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_teacher_);
 
 

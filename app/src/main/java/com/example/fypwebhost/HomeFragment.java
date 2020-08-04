@@ -80,7 +80,7 @@ public class HomeFragment extends Fragment {
 
         textViewName.setText(userName);
         textViewEmail.setText(userEmail);
-        textViewPassword.setText(userPassword);
+       // textViewPassword.setText(userPassword);
 
        // retrieveData();               //to get person's data
 
