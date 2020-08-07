@@ -10,6 +10,7 @@ public class  PostDetail {
         this.postDescription = postDescription;
     }
 
+
     public String getPostId() {
         return postId;
     }

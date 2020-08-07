@@ -4,6 +4,7 @@
     android:layout_height="wrap_content"
     android:layout_marginLeft="20dp"
     android:layout_marginTop="50dp"
+    android:background="@drawable/gradient"
     android:layout_marginRight="20dp"
     android:orientation="vertical">
 
@@ -11,5 +12,7 @@
         android:id="@+id/buttonLeaveClass"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Leave" />
+        android:text="Leave"
+
+        />
 </LinearLayout>

@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical" android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="@drawable/gradienttree">
 
     <com.google.android.material.textfield.TextInputLayout
         android:layout_width="match_parent"
@@ -13,6 +14,7 @@
             android:paddingTop="@android:dimen/app_icon_size"
             android:id="@+id/editTextName"
             android:layout_width="match_parent"
+            android:backgroundTint="@color/colorWhite"
             android:layout_height="wrap_content"
             android:ems="10"
             android:inputType="textPersonName"
@@ -33,8 +35,10 @@
            android:layout_width="match_parent"
            android:layout_height="wrap_content"
            android:ems="10"
+           android:backgroundTint="@color/colorWhite"
            android:inputType="textPersonName"
-           android:hint="Enter New Subject" />
+           android:hint="Enter New Subject"
+           />
 
    </com.google.android.material.textfield.TextInputLayout>
 
@@ -45,7 +49,10 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="30dp"
-        android:text="Update" />
+        android:text="Update"
+        android:textSize="18sp"
+        android:textColor="@color/colorWhite"
+        android:background="@drawable/button_transparent"/>
 
     <Button
         android:id="@+id/buttonDelete"
@@ -53,5 +60,8 @@
         android:layout_height="wrap_content"
         android:layout_marginLeft="30dp"
         android:layout_marginRight="30dp"
-        android:text="Delete" />
+        android:text="Delete"
+        android:textSize="18sp"
+        android:textColor="@color/colorWhite"
+        android:background="@drawable/button_transparent"/>
 </LinearLayout>

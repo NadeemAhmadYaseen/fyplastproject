@@ -45,6 +45,7 @@
             android:drawablePadding="10dp"
             android:layout_marginBottom="10dp"
             android:hint="Write Your Text Here"
+            android:inputType="textEmailAddress"
             />
 
         <Button
@@ -54,7 +55,7 @@
             android:layout_margin="22dp"
             android:textColor="@color/colorWhite"
             android:background="@drawable/button_transparent"
-            android:text="Cosine Algorithm"
+            android:text="Jaro Winkler Algorithm"
             android:textAllCaps="false"/>
 
         <Button
@@ -77,15 +78,14 @@
 
             android:textSize="20sp" />
 
-        <com.mikhaellopez.circularprogressbar.CircularProgressBar
-            android:layout_width="120dp"
-            android:layout_height="120dp"
-            app:cpb_background_progressbar_color="@color/colorDark"
-            app:cpb_background_progressbar_width="5dp"
+        <com.github.ybq.android.spinkit.SpinKitView
+            xmlns:app="http://schemas.android.com/apk/res-auto"
+            android:id="@+id/progressBar"
+            style="@style/SpinKitView.Large.Circle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:layout_gravity="center"
-            app:cpb_progressbar_color="#F44336"
-            app:cpb_progressbar_width="22dp"
-            android:id="@+id/circularprogressbar"/>
+            app:SpinKit_Color="@color/colorFacebook" />
 
 
 

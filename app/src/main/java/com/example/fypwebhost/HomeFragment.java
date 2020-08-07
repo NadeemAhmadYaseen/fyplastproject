@@ -34,8 +34,8 @@ public class HomeFragment extends Fragment {
   //  EditText editTextName, editTextEmail, editTextPassword;
     TextView  textViewName, textViewEmail,textViewPassword, textViewTest;
     Button buttonEditProfile;
-    ListView listView;
-    MyAdapterUser adapter;
+    //ListView listView;
+   // MyAdapterUser adapter;
 
     SharedPreferences prefs;
     String userEmail , UserId, userIdOld, userName, userPassword;
@@ -76,11 +76,11 @@ public class HomeFragment extends Fragment {
         textViewEmail = view.findViewById(R.id.textViewEmail);
         textViewPassword = view.findViewById(R.id.textViewPassword);
 
-        listView = view.findViewById(R.id.mylistview);
+      //  listView = view.findViewById(R.id.mylistview);
 
         textViewName.setText(userName);
         textViewEmail.setText(userEmail);
-       // textViewPassword.setText(userPassword);
+//        textViewPassword.setText(userPassword);
 
        // retrieveData();               //to get person's data
 
@@ -151,4 +151,6 @@ public class HomeFragment extends Fragment {
         RequestQueue requestQueue = Volley.newRequestQueue(getContext());
         requestQueue.add(request);
     }
+
+
 }

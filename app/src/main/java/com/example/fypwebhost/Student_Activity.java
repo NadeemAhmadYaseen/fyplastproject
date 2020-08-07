@@ -56,24 +56,19 @@ public class Student_Activity extends AppCompatActivity {
 
                     switch (item.getItemId()) {
                         case R.id.navigation_home:
-
                             selectedFragment = new HomeFragment(loginEmail,userId, userName, userPassword);
                             break;
                         case R.id.navigation_joinedClass:
-
                             selectedFragment = new JoinedClasses(loginEmail,userId, userName, userPassword);
                             break;
                         case R.id.navigation_joinClass:
-
                             selectedFragment = new JoinClassFragment(userId);
                             break;
                         default:
-
                              selectedFragment = new HomeFragment(loginEmail, userId, userName, userPassword);
                              break;
 
                     }
-
 
                     getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
                             selectedFragment).addToBackStack(null).commit();
@@ -92,12 +87,6 @@ public class Student_Activity extends AppCompatActivity {
             case R.id.menu_compare:
                 Intent intent = new Intent(getApplicationContext(), CosineComparing.class);
                 startActivity(intent);
-
-                Toast.makeText(getApplicationContext(), "profile pressed", Toast.LENGTH_SHORT).show();
-                break;
-            case R.id.menu_compare2:
-                Intent i = new Intent(getApplicationContext(), jaro_winkler_algorithm.class);
-                startActivity(i);
 
                 Toast.makeText(getApplicationContext(), "profile pressed", Toast.LENGTH_SHORT).show();
                 break;

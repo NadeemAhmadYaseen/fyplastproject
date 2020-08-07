@@ -215,9 +215,9 @@ public class MainActivity extends AppCompatActivity {
                     @Override
                     public void onResponse(String response) {
                         if (response.contains("Email verified cheema")) {
-                            Toast.makeText(MainActivity.this, "Email Verified", Toast.LENGTH_SHORT).show();
-                            String[] data = response.split(",");
-                            randomNumber = data[1];
+                                Toast.makeText(MainActivity.this, "Email Verified", Toast.LENGTH_SHORT).show();
+                                String[] data = response.split(",");
+                                randomNumber = data[1];
                         } else {
                             Toast.makeText(MainActivity.this, response, Toast.LENGTH_SHORT).show();
                         }
@@ -297,10 +297,7 @@ public class MainActivity extends AppCompatActivity {
                 Intent intent2 = new Intent(this, CosineComparing.class);
                 startActivity(intent2);
                 break;
-            case R.id.menu_compare2:
-                Intent ini = new Intent(this,jaro_winkler_algorithm.class);
-                startActivity(ini);
-                break;
+
 
         }
         return true;

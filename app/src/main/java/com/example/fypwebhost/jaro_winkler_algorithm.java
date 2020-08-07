@@ -36,7 +36,7 @@ public class jaro_winkler_algorithm extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_jaro_winkler_algorithm);
 
-        if (android.os.Build.VERSION.SDK_INT > 9) {
+        if (Build.VERSION.SDK_INT > 9) {
             StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
             StrictMode.setThreadPolicy(policy);
         }
@@ -76,9 +76,9 @@ public class jaro_winkler_algorithm extends AppCompatActivity {
                 != PackageManager.PERMISSION_GRANTED) {
             requestPermissions(new String[]{Manifest.permission.ACCESS_FINE_LOCATION}, 1011);
         } else {
-            S1 = getTextFromUrl("https://temp321.000webhostapp.com/connect/File1.txt");
+            S1 = getTextFromUrl("https://textplagiarismsql.000webhostapp.com/File1.txt");
             str1.setText(S1);
-            S2 = getTextFromUrl("https://temp321.000webhostapp.com/connect/File2.txt");
+            S2 = getTextFromUrl("https://textplagiarismsql.000webhostapp.com/File2.txt");
             str2.setText(S2);
 
             double myres = jaro_distance(S1, S2);

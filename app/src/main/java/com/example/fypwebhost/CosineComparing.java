@@ -4,6 +4,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -16,6 +17,8 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
+import com.github.ybq.android.spinkit.sprite.Sprite;
+import com.github.ybq.android.spinkit.style.Circle;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -24,13 +27,19 @@ public class CosineComparing extends AppCompatActivity {
 
     EditText editText1, editText2;
     Button buttonCompare, buttonCompare2;
+    ProgressBar progressBar;
     TextView textViewResult;
-    String URL = "https://temp321.000webhostapp.com/connect/cosineAlgo.php",
+    String URL = "https://temp321.000webhostapp.com/connect/JaroWinkler.php",
     URL2 = "https://temp321.000webhostapp.com/connect/jaccard_algo.php";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_cosine_comparing);
+        progressBar = (ProgressBar)findViewById(R.id.progressBar);
+        Sprite circle = new Circle();
+        progressBar.setIndeterminateDrawable(circle);
+
+        progressBar.setVisibility(View.INVISIBLE);
 
         editText1 = findViewById(R.id.editText1);
         editText2 = findViewById(R.id.editText2);
@@ -51,6 +60,7 @@ public class CosineComparing extends AppCompatActivity {
                 compareTextJaccard();
             }
         });
+
     }
 
 
@@ -65,7 +75,7 @@ public class CosineComparing extends AppCompatActivity {
         }
         else
         {
-
+            progressBar.setVisibility(View.VISIBLE);
             StringRequest request = new StringRequest(Request.Method.POST, URL,
                     new Response.Listener<String>() {
                         @Override
@@ -73,12 +83,14 @@ public class CosineComparing extends AppCompatActivity {
 
                             if(response.contains("%"))
                             {
+                                progressBar.setVisibility(View.INVISIBLE);
                                 textViewResult.setText(response);
 
 
                             }
                             else
                             {
+
                                 Toast.makeText(CosineComparing.this, response, Toast.LENGTH_SHORT).show();
                             }
 
@@ -119,7 +131,7 @@ public class CosineComparing extends AppCompatActivity {
         }
         else
         {
-
+            progressBar.setVisibility(View.VISIBLE);
             StringRequest request = new StringRequest(Request.Method.POST, URL2,
                     new Response.Listener<String>() {
                         @Override
@@ -127,12 +139,14 @@ public class CosineComparing extends AppCompatActivity {
 
                             if(response.contains("%"))
                             {
+                                progressBar.setVisibility(View.INVISIBLE);
                                 textViewResult.setText(response);
 
 
                             }
                             else
                             {
+
                                 Toast.makeText(CosineComparing.this, response, Toast.LENGTH_SHORT).show();
                             }
 

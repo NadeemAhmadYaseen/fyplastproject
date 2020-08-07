@@ -23,7 +23,7 @@ public class Teacher_Activity extends AppCompatActivity {
     String loginEmail, userId, userName, userPassword, Pic;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-         super.onCreate(savedInstanceState);
+        super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_teacher_);
 
 
@@ -63,16 +63,12 @@ public class Teacher_Activity extends AppCompatActivity {
                             selectedFragment = new HomeFragment(loginEmail, userId, userName, userPassword);
                             break;
                     }
-
                     getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
                             selectedFragment).addToBackStack(null).commit();
 
                     return true;
-
-
                 }
             };
-
 
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.mymenu,menu);
@@ -85,7 +81,7 @@ public class Teacher_Activity extends AppCompatActivity {
 //                Intent intent = new Intent(getApplicationContext(), Student_Activity.class);
 //                startActivity(intent);
 
-             //   attach_image();
+
 
                 Toast.makeText(getApplicationContext(), "profile pressed", Toast.LENGTH_SHORT).show();
                 break;
@@ -105,12 +101,6 @@ public class Teacher_Activity extends AppCompatActivity {
                 Intent intent2 = new Intent(this, CosineComparing.class);
                 startActivity(intent2);
                 break;
-
-            case R.id.menu_compare2:
-                Intent inten = new Intent(this, jaro_winkler_algorithm.class);
-                startActivity(inten);
-                break;
-
 
         }
         return true;

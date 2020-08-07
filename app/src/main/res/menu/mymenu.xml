@@ -14,8 +14,6 @@
         android:id="@+id/menu_compare">
     </item>
 
-    <item android:title="Compare2"
-        android:id="@+id/menu_compare2">
-    </item>
+
 
 </menu>

@@ -253,10 +253,7 @@ getSupportActionBar().hide();
                 Intent intent2 = new Intent(this, CosineComparing.class);
                 startActivity(intent2);
                 break;
-            case R.id.menu_compare2:
-                Intent in = new Intent(this, jaro_winkler_algorithm.class);
-                startActivity(in);
-                break;
+
 
         }
         return true;
