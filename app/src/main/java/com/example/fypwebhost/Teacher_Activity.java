@@ -77,14 +77,7 @@ public class Teacher_Activity extends AppCompatActivity {
     public boolean onOptionsItemSelected(MenuItem item) {
         int id = item.getItemId();
         switch (id){
-            case R.id.menu_profile:
-//                Intent intent = new Intent(getApplicationContext(), Student_Activity.class);
-//                startActivity(intent);
 
-
-
-                Toast.makeText(getApplicationContext(), "profile pressed", Toast.LENGTH_SHORT).show();
-                break;
             case R.id.menu_logout:
                 Toast.makeText(getApplicationContext(), "logout pressed", Toast.LENGTH_SHORT).show();
                 SharedPreferences sharedPreferences = getApplicationContext().getSharedPreferences("LogIn", Context.MODE_PRIVATE);
